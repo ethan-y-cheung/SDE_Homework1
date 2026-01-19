@@ -126,7 +126,7 @@ public class Sonnet {
      * @param scanner the Scanner to use for user input
      */
     public void play(Scanner scanner) {
-        while(correctAnswers >= 3 || incorrectAnswers >= 3) { // Game not over
+        while(correctAnswers < 3 && incorrectAnswers < 3) { // Game not over
             QuizQuestion question = generateQuestion();
 
             System.out.println(question.getContext());
