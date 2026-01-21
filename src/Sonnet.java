@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 /**
  * A quiz of words from Prithee (for Pat?).
+ *
+ * <p>The program reads a sonnet from a file (Prithee), randomly selects a word, and asks
+ * the user to guess the word after printing the Sonnet up to that word. The program continues
+ * until the user gets 3 correct or 3 incorrect answers.
  */
 
 public class Sonnet {
@@ -24,6 +28,21 @@ public class Sonnet {
         }
         this.words = text.split(" ");
         this.random = new Random();
+        this.correctAnswers = 0;
+        this.incorrectAnswers = 0;
+    }
+    /**
+     * Constructs a new Sonnet with a random instance (Used for testing)
+     *
+     * @param text the complete text of the sonnet (Prithee)
+     * @param random the Random instance to select words
+     */
+    public Sonnet(String text, Random random) {
+        if(text == null) {
+            text = "";
+        }
+        this.words = text.split(" ");
+        this.random = random;
         this.correctAnswers = 0;
         this.incorrectAnswers = 0;
     }
