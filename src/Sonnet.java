@@ -5,12 +5,6 @@ import java.util.Scanner;
 
 /**
  * A quiz of words from Prithee (for Pat?).
- *
- * <p>The program reads a sonnet from a file (Prithee), randomly selects a word, and asks
- * the user to guess the word after printing the Sonnet up to that word. The program continues
- * until the user gets 3 correct or 3 incorrect answers.
- *
- * @author Ethan
  */
 
 public class Sonnet {
@@ -35,22 +29,6 @@ public class Sonnet {
     }
 
     /**
-     * Constructs a new Sonnet with a random instance (Used for testing)
-     *
-     * @param text the complete text of the sonnet (Prithee)
-     * @param random the Random instance to select words
-     */
-    public Sonnet(String text, Random random) {
-        if(text == null) {
-            text = "";
-        }
-        this.words = text.split(" ");
-        this.random = random;
-        this.correctAnswers = 0;
-        this.incorrectAnswers = 0;
-    }
-
-    /**
      * Reads a sonnet from a file.
      *
      * @param filename the filepath of the sonnet
@@ -60,7 +38,7 @@ public class Sonnet {
     public static String readSonnet(String filename) throws FileNotFoundException {
         File sonnet = new File(filename);
         StringBuilder text = new StringBuilder();
-        try(Scanner sc = new Scanner(sonnet)) {
+        try (Scanner sc = new Scanner(sonnet)) {
             while(sc.hasNextLine()) {
                 text.append(sc.nextLine()).append(" \n"); // Add newline to the front of the next word when split
             }
@@ -97,11 +75,8 @@ public class Sonnet {
         String normalizedAnswer = userAnswer.strip().toLowerCase();
         boolean isCorrect = normalizedAnswer.equals(question.getAnswer());
 
-        if (isCorrect) {
-            correctAnswers++;
-        } else {
-            incorrectAnswers++;
-        }
+        if (isCorrect) {correctAnswers++;}
+        else {incorrectAnswers++;}
 
         return isCorrect;
     }
@@ -146,26 +121,7 @@ public class Sonnet {
 
             System.out.println();
         }
-        System.out.println("You got " + correctAnswers + "/" + correctAnswers + incorrectAnswers + " correct.");
-    }
-
-    /**
-     * Main entry point for the application
-     *
-     * @param args unused command line arguments
-     */
-    static void main(String[] args) {
-        try {
-            String sonnetText = readSonnet("Sonnet.txt");
-            Sonnet game = new Sonnet(sonnetText);
-
-            try (Scanner scanner = new Scanner(System.in)) {
-                game.play(scanner);
-            }
-        } catch (FileNotFoundException e) {
-            System.err.println("Error: File Not Found.");
-            System.exit(1);
-        }
+        System.out.println("You got " + correctAnswers + "/" + (correctAnswers + incorrectAnswers) + " correct.");
     }
 
     /**

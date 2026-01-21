@@ -1,14 +1,10 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-
+import static org.junit.jupiter.api.Assertions.*;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Unit tests for Sonnet class
- */
 class SonnetTest {
     private Sonnet game;
 

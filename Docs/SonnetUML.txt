@@ -1,0 +1,11 @@
+Sonnet
+-----------------------
+-words:String[]
+-random:Random
+-correctAnswers:int
+-incorrectAnswers:int
+-----------------------
++readSonnet()
++generateQuestion()
++checkAnswer()
++play()
